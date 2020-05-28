@@ -2,5 +2,11 @@
   "name": "gumdrop",
   "version": "5.0.0",
   "author": "Márton Visnovitz <vimtaai@inf.elte.hu>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^3.9.3"
+  }
 }
