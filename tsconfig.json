@@ -5,7 +5,8 @@
     "rootDir": "src",
     "baseUrl": "src",
     "declaration": true,
-    "strict": true
+    "strict": true,
+    "lib": ["ES2015"]
   },
   "include": ["src"],
   "exclude": ["node_modules"]
