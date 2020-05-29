@@ -1,45 +1,68 @@
-import { File, FileTransform, FileType, TransformUtils } from "core/types";
+import { Parsers, Parser } from "config/parsers";
+import { File, FileType } from "core/classes/file";
+
+export interface TransformUtils {
+  resolvePath(rawPath: string): string;
+  fetchFile(path: string): Promise<string>;
+  loadModule(moduleName: string): Promise<any>;
+}
+
+export interface Transform {
+  (transformer: Transformer): Promise<void>;
+}
 
 export class Transformer {
-  private file: File;
-  private utils: TransformUtils;
-  private transforms: Array<FileTransform> = [];
+  public file: File;
+  public utils: TransformUtils;
+  public parser: Parser = Parsers.TEXT;
+  private transforms: Array<Transform> = [];
 
-  constructor(rawPath: string, utils: TransformUtils) {
+  public constructor(rawPath: string, utils: TransformUtils) {
     const { resolvePath } = utils;
-    const { path, extension } = resolvePath(rawPath);
+    const path = resolvePath(rawPath);
 
     this.utils = utils;
-    this.file = {
-      path: path,
-      extension: extension,
-      contents: null,
-      data: null,
-      type: FileType.UNKNOWN,
-    };
+    this.file = new File(path);
+
+    const parser = Object.values(Parsers).find((parser) =>
+      parser.extensions.includes(this.file.extension)
+    );
+
+    if (parser) {
+      this.setParser(parser);
+    }
   }
 
-  addTransform(transform: FileTransform) {
+  public addTransform(transform: Transform) {
     this.transforms.push(transform);
   }
 
-  async applyTransforms() {
+  public async applyTransforms() {
     for (const transform of this.transforms) {
-      await transform(this.file, this.utils);
+      await transform(this);
     }
   }
 
-  getResult() {
-    if (this.file.type === FileType.UNKNOWN) {
+  public getResult() {
+    if (this.parser.type === FileType.UNKNOWN) {
       return null;
     }
 
-    if (this.file.type === FileType.DATA) {
+    if (this.parser.type === FileType.DATA) {
       return this.file.data;
     }
 
-    if (this.file.type === FileType.DOCUMENT) {
+    if (this.parser.type === FileType.DOCUMENT) {
       return this.file.contents;
+    }
+  }
+
+  private setParser(parser: Parser) {
+    this.parser = parser;
+
+    if (this.parser.type === FileType.DATA) {
+      this.file.data = this.file.contents;
+      this.file.contents = null;
     }
   }
 }

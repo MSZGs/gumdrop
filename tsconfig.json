@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
     "module": "esnext",
+    "target": "ESNext",
     "outDir": "esm",
     "rootDir": "src",
     "baseUrl": "src",
     "declaration": true,
     "strict": true,
-    "lib": ["ES2015"]
+    "lib": ["ES2017"]
   },
   "include": ["src"],
   "exclude": ["node_modules"]
