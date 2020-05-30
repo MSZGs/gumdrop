@@ -35,6 +35,8 @@ export class Transformer {
 
   public addTransform(transform: Transform) {
     this.transforms.push(transform);
+
+    return this;
   }
 
   public async applyTransforms() {
@@ -62,7 +64,7 @@ export class Transformer {
 
     if (this.parser.type === FileType.DATA) {
       this.file.data = this.file.contents;
-      this.file.contents = null;
+      this.file.contents = "";
     }
   }
 }

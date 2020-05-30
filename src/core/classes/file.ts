@@ -5,7 +5,7 @@ export const enum FileType {
 }
 
 export class File {
-  public contents: string | null = null;
+  public contents: string = "";
   public data: object | string | null = null;
   public path: string;
 
