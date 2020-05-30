@@ -1,11 +1,5 @@
-export const enum FileType {
-  UNKNOWN,
-  DATA,
-  DOCUMENT,
-}
-
 export class File {
-  public contents: string = "";
+  public content: object | string | null = null;
   public data: object | string | null = null;
   public path: string;
 
