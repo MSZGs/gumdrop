@@ -1,15 +1,15 @@
 {
   "name": "gumdrop",
   "version": "5.0.0",
-  "author": "Márton Visnovitz <vimtaai@inf.elte.hu>",
   "license": "MIT",
+  "author": "Márton Visnovitz <vimtaai@inf.elte.hu>",
   "scripts": {
     "build": "tsc"
   },
-  "devDependencies": {
-    "typescript": "^3.9.3"
-  },
   "dependencies": {
     "yaml": "^1.10.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.9.3"
   }
 }
