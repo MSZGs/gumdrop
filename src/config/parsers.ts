@@ -1,6 +1,7 @@
 import { Transformer } from "core/classes/transformer";
 import { parseText } from "core/parsers/text";
 import { parseHtml } from "core/parsers/html";
+import { parseMarkdown } from "core/parsers/markdown";
 import { parseJson } from "core/parsers/json";
 import { parseYaml } from "core/parsers/yaml";
 
@@ -24,7 +25,7 @@ export const Parsers: { [name: string]: Parser } = {
   },
   MARKDOWN: {
     extensions: ["md", "markdown"],
-    parse: async () => null,
+    parse: parseMarkdown,
   },
   JSON: {
     extensions: ["json"],

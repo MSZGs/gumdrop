@@ -23,6 +23,8 @@ export class FileValue {
   }
 }
 
-export async function parseYaml(input: string) {
-  return parse(input, options);
-}
+export default {
+  async parse(input: string) {
+    return parse(input, options);
+  },
+};
