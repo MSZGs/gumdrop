@@ -2,8 +2,8 @@ import { Transformer } from "core/classes/transformer";
 
 export async function parseYaml(input: string, transformer: Transformer) {
   const { loadModule } = transformer.utils;
-  const { parse, FileValue } = await loadModule("yaml");
-  const parsedData = await parse(input);
+  const { yamlToData, FileValue } = await loadModule("yaml");
+  const parsedData = await yamlToData(input);
 
   async function resolveFiles(data: any) {
     if (typeof data !== "object" || data === null) {

@@ -24,7 +24,7 @@ export class FileValue {
 }
 
 export default {
-  async parse(input: string) {
+  async yamlToData(input: string) {
     return parse(input, options);
   },
 };

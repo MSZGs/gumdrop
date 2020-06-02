@@ -1,7 +1,7 @@
 import { render } from "extramark";
 
 export default {
-  async parse(input: string) {
+  async markdownToHtml(input: string) {
     return render(input);
   },
 };
