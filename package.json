@@ -1,0 +1,14 @@
+{
+  "name": "gumdrop",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vimtaai/gumdrop.git"
+  },
+  "scripts": {},
+  "devDependencies": {
+    "lerna": "^3.22.0",
+    "typescript": "^3.9.5"
+  }
+}
