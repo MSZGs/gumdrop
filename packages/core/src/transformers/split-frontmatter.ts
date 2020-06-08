@@ -1,9 +1,9 @@
-import { TransformerParams } from "../processor";
+import { TransformerParams } from "../classes/processor";
 
 const frontMatterRegexp = /^---[ \t]*\r?\n(.*?\r?\n|\r?\n)---[ \t]*\r?\n[ \r\n\t]*(.*)$/s;
 
 export async function splitFrontmatter({ file }: TransformerParams) {
-  if (typeof file.content !== "string") {
+  if (file.isDocument) {
     return;
   }
 
