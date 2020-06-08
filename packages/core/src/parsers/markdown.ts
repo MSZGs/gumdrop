@@ -1,4 +1,4 @@
-import { ParserParams } from "../parsers";
+import { ParserParams } from "parsers";
 
 export async function parseMarkdown({ input, utils }: ParserParams) {
   const { loadModule } = utils;

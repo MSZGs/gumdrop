@@ -1,4 +1,4 @@
-import { ParserParams } from "../parsers";
+import { ParserParams } from "parsers";
 
 export async function parseYaml({ input, utils, processor }: ParserParams) {
   const { loadModule } = utils;

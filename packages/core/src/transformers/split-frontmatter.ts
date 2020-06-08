@@ -1,4 +1,4 @@
-import { TransformerParams } from "../classes/processor";
+import { TransformerParams } from "classes/processor";
 
 const frontMatterRegexp = /^---[ \t]*\r?\n(.*?\r?\n|\r?\n)---[ \t]*\r?\n[ \r\n\t]*(.*)$/s;
 

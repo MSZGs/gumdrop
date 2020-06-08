@@ -1,4 +1,4 @@
-import { File } from "./file";
+import { File } from "classes/file";
 
 export interface ProcessorUtils {
   resolvePath(rawPath: string): string;

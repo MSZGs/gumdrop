@@ -1,10 +1,10 @@
-import { Processor, ProcessorUtils } from "./classes/processor";
-import { parseText } from "./parsers/text";
-import { parseHtml } from "./parsers/html";
-import { parseMarkdown } from "./parsers/markdown";
-import { parseJson } from "./parsers/json";
-import { parseYaml } from "./parsers/yaml";
-import { FileType } from "./classes/file";
+import { Processor, ProcessorUtils } from "classes/processor";
+import { FileType } from "classes/file";
+import { parseText } from "parsers/text";
+import { parseHtml } from "parsers/html";
+import { parseMarkdown } from "parsers/markdown";
+import { parseJson } from "parsers/json";
+import { parseYaml } from "parsers/yaml";
 
 export interface ParserParams {
   input: string;
@@ -17,9 +17,11 @@ export type DocumentParser = (params: ParserParams) => Promise<string>;
 export type DataParser = (params: ParserParams) => Promise<object>;
 
 export function getParserByExtension(extension: string) {
-  return Object.values(Parsers).find((parser) =>
+  const parser = Object.values(Parsers).find((parser) =>
     parser.extensions.includes(extension)
   );
+
+  return parser || Parsers.TEXT;
 }
 
 export const Parsers = {
