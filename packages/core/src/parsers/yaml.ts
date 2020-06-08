@@ -1,31 +1,14 @@
 import { ParserParams } from "parsers";
-import { FileType } from "classes/file";
+import { FileType, File } from "classes/file";
 
 export const yamlParser = {
   name: "yaml",
   extensions: ["yaml", "yml"],
   type: FileType.DATA,
-  async parse({ input, utils, processor }: ParserParams) {
-    async function resolveFiles(data: any) {
-      if (typeof data !== "object" || data === null) {
-        return data;
-      }
+  async parse({ input, utils }: ParserParams) {
+    const { yamlToData } = await utils.loadModule("yaml");
+    const fileTag = { tag: "!file", Type: File };
 
-      for (const key in data) {
-        const value = data[key];
-
-        if (value instanceof FileValue) {
-          data[key] = await processor.process(value.path, utils);
-        } else {
-          data[key] = await resolveFiles(data[key]);
-        }
-      }
-
-      return data;
-    }
-
-    const { yamlToData, FileValue } = await utils.loadModule("yaml");
-    const parsedData = await yamlToData(input);
-    return resolveFiles(parsedData);
+    return yamlToData(input, [fileTag]);
   },
 };

@@ -1,5 +1,4 @@
 import { Processor, ProcessorUtils } from "classes/processor";
-import { FileType } from "classes/file";
 import { textParser } from "parsers/text";
 import { htmlParser } from "parsers/html";
 import { markdownParser } from "parsers/markdown";

@@ -1,30 +1,17 @@
-import { CST, Document, Options, parse } from "yaml";
-import { Schema } from "yaml/types";
+import { CST, Document, parse } from "yaml";
 
-const fileTag: Schema.Tag = {
-  tag: "!file",
-  identify(value: any) {
-    return value instanceof FileValue;
-  },
-  resolve(document: Document, cst: CST.Node) {
-    return new FileValue(cst.value || "");
-  },
-};
-
-const options: Options = {
-  customTags: [fileTag],
-};
-
-export class FileValue {
-  public path: string;
-
-  constructor(path: string) {
-    this.path = path;
-  }
-}
+type YamlType = new (value: string) => any;
+type YamlCustomTag = { tag: string; Type: YamlType };
+type YamlCustomTagList = Array<YamlCustomTag>;
 
 export default {
-  async yamlToData(input: string) {
-    return parse(input, options);
+  async yamlToData(input: string, customTypes: YamlCustomTagList) {
+    const customTags = customTypes.map(({ tag, Type }) => ({
+      tag,
+      identify: (value: any) => value instanceof Type,
+      resolve: (document: Document, cst: CST.Node) => new Type(cst.value),
+    }));
+
+    return parse(input, { customTags });
   },
 };

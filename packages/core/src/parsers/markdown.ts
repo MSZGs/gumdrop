@@ -6,8 +6,7 @@ export const markdownParser = {
   extensions: ["md", "markdown"],
   type: FileType.DOCUMENT,
   async parse({ input, utils }: ParserParams) {
-    const { loadModule } = utils;
-    const { markdownToHtml } = await loadModule("markdown");
+    const { markdownToHtml } = await utils.loadModule("markdown");
 
     return markdownToHtml(input);
   },
