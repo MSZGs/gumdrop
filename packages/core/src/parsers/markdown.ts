@@ -1,8 +1,14 @@
 import { ParserParams } from "parsers";
+import { FileType } from "classes/file";
 
-export async function parseMarkdown({ input, utils }: ParserParams) {
-  const { loadModule } = utils;
-  const { markdownToHtml } = await loadModule("markdown");
+export const markdownParser = {
+  name: "markdown",
+  extensions: ["md", "markdown"],
+  type: FileType.DOCUMENT,
+  async parse({ input, utils }: ParserParams) {
+    const { loadModule } = utils;
+    const { markdownToHtml } = await loadModule("markdown");
 
-  return markdownToHtml(input);
-}
+    return markdownToHtml(input);
+  },
+};

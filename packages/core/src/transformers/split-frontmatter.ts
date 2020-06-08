@@ -3,7 +3,7 @@ import { TransformerParams } from "classes/processor";
 const frontMatterRegexp = /^---[ \t]*\r?\n(.*?\r?\n|\r?\n)---[ \t]*\r?\n[ \r\n\t]*(.*)$/s;
 
 export async function splitFrontmatter({ file }: TransformerParams) {
-  if (file.isDocument) {
+  if (!file.isDocument) {
     return;
   }
 

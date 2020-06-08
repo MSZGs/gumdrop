@@ -1,5 +1,11 @@
 import { ParserParams } from "parsers";
+import { FileType } from "classes/file";
 
-export async function parseText({ input }: ParserParams) {
-  return input;
-}
+export const textParser = {
+  name: "text",
+  extensions: ["txt"],
+  type: FileType.DOCUMENT,
+  async parse({ input }: ParserParams) {
+    return input;
+  },
+};

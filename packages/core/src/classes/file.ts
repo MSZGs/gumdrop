@@ -28,4 +28,8 @@ export class File {
   public get isData() {
     return this.type === FileType.DATA;
   }
+
+  public get isDataParsed() {
+    return typeof this.data === "object";
+  }
 }

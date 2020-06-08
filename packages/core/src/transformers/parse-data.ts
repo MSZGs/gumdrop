@@ -1,12 +1,13 @@
 import { TransformerParams } from "classes/processor";
-import { Parsers } from "parsers";
+import { getParserByName } from "parsers";
 
 export async function parseData({ file, utils, processor }: TransformerParams) {
-  if (typeof file.data !== "string") {
+  if (file.isDataParsed) {
     return;
   }
 
-  const parser = Parsers.YAML;
+  const parser = getParserByName("yaml");
+  const input = file.data as string;
 
-  file.data = parser.parse({ input: file.data, utils, processor });
+  file.data = await parser.parse({ input, utils, processor });
 }
