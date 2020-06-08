@@ -12,9 +12,7 @@ export interface TransformerParams {
   processor: Processor;
 }
 
-export interface Transformer {
-  (params: TransformerParams): Promise<void>;
-}
+export type Transformer = (params: TransformerParams) => Promise<void>;
 
 export class Processor {
   public transformers: Array<Transformer> = [];

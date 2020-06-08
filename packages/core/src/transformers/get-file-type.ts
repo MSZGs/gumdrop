@@ -1,6 +1,8 @@
 import { TransformerParams } from "../classes/processor";
-import { FileType } from "../classes/file";
+import { getParserByExtension } from "../parsers";
 
 export async function getFileType({ file }: TransformerParams) {
-  file.type = FileType.DOCUMENT;
+  const parser = getParserByExtension(file.extension);
+
+  file.type = parser.type;
 }
