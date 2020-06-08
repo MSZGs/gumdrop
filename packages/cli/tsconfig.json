@@ -4,7 +4,7 @@
   "exclude": ["node_modules"],
   "compilerOptions": {
     "paths": {
-      "*": ["core/node_modules/*", "core/src/*"]
+      "*": ["cli/node_modules/*", "cli/src/*"]
     }
   }
 }

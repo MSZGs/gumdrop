@@ -9,5 +9,8 @@
     "url": "https://github.com/vimtaai/gumdrop.git",
     "directory": "packages/web"
   },
-  "scripts": {}
+  "scripts": {},
+  "dependencies": {
+    "@gumdrop/core": "^1.0.0"
+  }
 }
