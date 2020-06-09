@@ -1,11 +1,10 @@
-import { ParserParams } from "parsers";
-import { FileType } from "classes/file";
+import { FileType } from "../classes/file.js";
 
 export const htmlParser = {
   name: "html",
   extensions: ["html", "htm", "xhtml"],
   type: FileType.DOCUMENT,
-  async parse({ input }: ParserParams) {
+  async parse({ input }) {
     return input;
   },
 };

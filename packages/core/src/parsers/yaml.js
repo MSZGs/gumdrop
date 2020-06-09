@@ -1,11 +1,10 @@
-import { ParserParams } from "parsers";
-import { FileType, File } from "classes/file";
+import { FileType, File } from "../classes/file.js";
 
 export const yamlParser = {
   name: "yaml",
   extensions: ["yaml", "yml"],
   type: FileType.DATA,
-  async parse({ input, utils }: ParserParams) {
+  async parse({ input, utils }) {
     const { yamlToData } = await utils.loadModule("yaml");
     const fileTag = { tag: "!file", Type: File };
 

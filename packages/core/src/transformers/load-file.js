@@ -1,6 +1,4 @@
-import { TransformerParams } from "classes/processor";
-
-export async function loadFile({ file, utils }: TransformerParams) {
+export async function loadFile({ file, utils }) {
   const fileContent = await utils.fetchFile(file.path);
 
   if (file.isDocument) {

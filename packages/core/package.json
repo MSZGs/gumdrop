@@ -4,7 +4,8 @@
   "description": "Core functionality of Gumdrop packages",
   "author": "Márton Visnovitz <vimtaai@inf.elte.hu>",
   "license": "MIT",
-  "module": "esm/index.js",
+  "type": "module",
+  "main": "src/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/vimtaai/gumdrop.git",

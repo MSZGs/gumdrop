@@ -1,11 +1,10 @@
-import { ParserParams } from "parsers";
-import { FileType } from "classes/file";
+import { FileType } from "../classes/file.js";
 
 export const jsonParser = {
   name: "json",
   extensions: ["json"],
   type: FileType.DATA,
-  async parse({ input }: ParserParams) {
+  async parse({ input }) {
     return JSON.parse(input);
   },
 };

@@ -1,5 +1,5 @@
 export default {
-  async markdownToHtml(input: string) {
+  async markdownToHtml(input) {
     return input;
   },
 };

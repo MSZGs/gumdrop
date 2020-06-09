@@ -1,9 +1,8 @@
-import { dirname } from "path";
 import Commander from "commander";
 import Signale from "signale";
 import FileSystem from "fs-extra";
-
 import { processor } from "@gumdrop/core";
+import { dirname } from "path";
 import { resolvePath } from "./utils/resolve.js";
 import { fetchFile } from "./utils/fetch.js";
 import { loadModule } from "./utils/module.js";
@@ -45,7 +44,8 @@ async function convert(program) {
 
   try {
     logger.await("Generating output...");
-    output.data = await processor.process(input.file, { resolvePath, fetchFile, loadModule });
+    const utils = { resolvePath, fetchFile, loadModule };
+    output.data = await processor.process(input.file, utils);
   } catch (err) {
     logger.error(`Could not parse input data.\n`, err);
     return;

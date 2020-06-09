@@ -1,6 +1,4 @@
-import { TransformerParams } from "classes/processor";
-
-export async function renderTemplate({ file, utils }: TransformerParams) {
+export async function renderTemplate({ file, utils }) {
   if (!file.isDocument) {
     return;
   }

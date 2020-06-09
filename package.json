@@ -8,10 +8,6 @@
   },
   "scripts": {},
   "devDependencies": {
-    "lerna": "^3.22.0",
-    "typescript": "^3.9.5"
-  },
-  "prettier": {
-    "printWidth": 100
+    "lerna": "^3.22.0"
   }
 }

@@ -1,12 +1,11 @@
-import { File } from "classes/file";
-import { TransformerParams } from "classes/processor";
+import { File } from "../classes/file.js";
 
-export async function resolveData({ file, utils, processor }: TransformerParams) {
+export async function resolveData({ file, utils, processor }) {
   if (!file.isDocument) {
     return;
   }
 
-  async function resolveValue(data: any) {
+  async function resolveValue(data) {
     if (typeof data !== "object" || data === null) {
       return data;
     }
