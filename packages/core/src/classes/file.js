@@ -1,5 +1,5 @@
 export class File {
-  Types = {
+  static Types = {
     UNKNOWN: "unknown",
     DOCUMENT: "document",
     DATA: "data",
