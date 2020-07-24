@@ -10,6 +10,7 @@ import { renderTemplate } from "./transformers/render-template.js";
 
 export { File } from "./classes/file.js";
 export { Processor } from "./classes/processor.js";
+
 export const processor = new Processor();
 
 processor

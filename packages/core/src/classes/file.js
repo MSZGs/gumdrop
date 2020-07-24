@@ -1,14 +1,18 @@
-export const FileType = {
-  UNKNOWN: "unknown",
-  DOCUMENT: "document",
-  DATA: "data",
-};
-
 export class File {
-  content = "";
-  data = null;
+  Types = {
+    UNKNOWN: "unknown",
+    DOCUMENT: "document",
+    DATA: "data",
+  };
+
   path = "";
-  type = FileType.UNKNOWN;
+  type = File.Types.UNKNOWN;
+  rawContent = "";
+  content = null;
+  data = null;
+
+  isDataParsed = false;
+  isContentParsed = false;
 
   constructor(path) {
     this.path = path;
@@ -22,15 +26,19 @@ export class File {
     return this.basename.split(".").pop() || "";
   }
 
-  get isDocument() {
-    return this.type === FileType.DOCUMENT;
+  get isDocumentFile() {
+    return this.type === File.Types.DOCUMENT;
   }
 
-  get isData() {
-    return this.type === FileType.DATA;
+  get isDataFile() {
+    return this.type === File.Types.DATA;
   }
 
-  get isDataParsed() {
-    return typeof this.data === "object";
+  get hasContent() {
+    return this.isDocumentFile && this.content !== null;
+  }
+
+  get hasData() {
+    return this.data !== null;
   }
 }

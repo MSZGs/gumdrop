@@ -1,4 +1,4 @@
-import { FileType, File } from "./file.js";
+import { File } from "./file.js";
 
 export class Processor {
   transformers = [];
@@ -17,6 +17,6 @@ export class Processor {
       await transformer({ file, utils, processor: this });
     }
 
-    return file.type === FileType.DATA ? file.data : file.content;
+    return file.isDataFile ? file.data : file.content;
   }
 }

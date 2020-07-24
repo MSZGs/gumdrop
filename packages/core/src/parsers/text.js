@@ -1,9 +1,10 @@
-import { FileType } from "../classes/file.js";
+import { File } from "../classes/file.js";
 
 export const textParser = {
   name: "text",
   extensions: ["txt"],
-  type: FileType.DOCUMENT,
+  type: File.Types.DOCUMENT,
+
   async parse({ input }) {
     return input;
   },

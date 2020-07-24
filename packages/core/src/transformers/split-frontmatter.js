@@ -1,7 +1,7 @@
 const frontMatterRegexp = /^---[ \t]*\r?\n(.*?\r?\n|\r?\n)---[ \t]*\r?\n[ \r\n\t]*(.*)$/s;
 
 export async function splitFrontmatter({ file }) {
-  if (!file.isDocument) {
+  if (!file.hasContent) {
     return;
   }
 

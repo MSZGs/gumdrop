@@ -5,11 +5,19 @@ import { jsonParser } from "./parsers/json.js";
 import { yamlParser } from "./parsers/yaml.js";
 
 export function getParserByName(name) {
-  return parsers.find((parser) => parser.name === name);
+  const parser = parsers.find((parser) => parser.name === name);
+
+  if (!parser) {
+    throw new Error(`Parser "${name}" not found`);
+  }
+
+  return parser;
 }
 
 export function getParserByExtension(extension) {
-  return parsers.find((parser) => parser.extensions.includes(extension)) || defaultParser;
+  const parser = parsers.find((parser) => parser.extensions.includes(extension));
+
+  return parser || defaultParser;
 }
 
 const parsers = [textParser, htmlParser, markdownParser, jsonParser, yamlParser];

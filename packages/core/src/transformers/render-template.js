@@ -1,5 +1,5 @@
 export async function renderTemplate({ file, utils }) {
-  if (!file.isDocument) {
+  if (!file.hasContent) {
     return;
   }
 

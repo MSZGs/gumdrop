@@ -1,7 +1,7 @@
 import { File } from "../classes/file.js";
 
 export async function resolveData({ file, utils, processor }) {
-  if (!file.isDocument) {
+  if (!file.hasData) {
     return;
   }
 

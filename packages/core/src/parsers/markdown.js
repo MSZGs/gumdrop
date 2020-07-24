@@ -1,9 +1,10 @@
-import { FileType } from "../classes/file.js";
+import { File } from "../classes/file.js";
 
 export const markdownParser = {
   name: "markdown",
   extensions: ["md", "markdown"],
-  type: FileType.DOCUMENT,
+  type: File.Types.DOCUMENT,
+
   async parse({ input, utils }) {
     const { markdownToHtml } = await utils.loadModule("markdown");
 

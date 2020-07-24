@@ -1,7 +1,7 @@
 const pathRegexp = /^(\/|\.\.?\/?)?(.+?)(\.(.+))?$/;
 
 export function resolvePath(rawPath) {
-  const [, prefix, file, , extension = "md"] = pathRegexp.exec(rawPath);
+  const [, prefix, basename, , extension = "md"] = pathRegexp.exec(rawPath);
 
-  return `${file}.${extension}`;
+  return `${basename}.${extension}`;
 }

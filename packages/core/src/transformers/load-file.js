@@ -1,9 +1,9 @@
 export async function loadFile({ file, utils }) {
-  const fileContent = await utils.fetchFile(file.path);
+  file.rawContent = await utils.fetchFile(file.path);
 
   if (file.isDocument) {
-    file.content = fileContent;
+    file.content = file.rawContent;
   } else if (file.isData) {
-    file.data = fileContent;
+    file.data = file.rawContent;
   }
 }
