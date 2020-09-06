@@ -1,16 +1,29 @@
 {
   "name": "gumdrop",
-  "private": true,
+  "version": "5.0.0",
+  "description": "Script for generating documents with Gumdrop",
+  "author": "Márton Visnovitz <vimtaai@inf.elte.hu>",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/vimtaai/gumdrop.git"
+  "repository": "github:vimtaai/gumdrop",
+  "type": "module",
+  "main": "src/core/index.js",
+  "browser": "dist/gumdrop.web.min.js",
+  "bin": "bin/gumdrop.js",
+  "files": [
+    "/src",
+    "/bin",
+    "/dist"
+  ],
+  "scripts": {
+    "build": "",
+    "build:dev": "",
+    "prepare": "npm run build && npm run build:dev"
   },
-  "scripts": {},
-  "devDependencies": {
-    "lerna": "^3.22.0"
-  },
-  "prettier": {
-    "printWidth": 100
+  "dependencies": {
+    "commander": "^6.1.0",
+    "fs-extra": "^9.0.1",
+    "mustache": "^4.0.1",
+    "signale": "^1.4.0",
+    "yaml": "^1.10.0"
   }
 }

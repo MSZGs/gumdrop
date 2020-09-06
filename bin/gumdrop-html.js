@@ -5,8 +5,8 @@ import Signale from "signale";
 import FsExtra from "fs-extra";
 
 import { dirname } from "path";
-import { processor } from "@gumdrop/core";
 
+import { processor } from "../src/core/index.js";
 import { resolvePath } from "./utils/resolve.js";
 import { fetchFile } from "./utils/fetch.js";
 import { loadModule } from "./utils/module.js";
@@ -15,10 +15,10 @@ const program = new Commander.Command();
 const logger = new Signale.Signale({ scope: "gumdrop", interactive: true });
 
 program
-  .option("-i --input [path]", "path of the input file")
-  .option("-o --output [path]", "path of the output .html file")
-  .option("-c --css [css]", "path to the CSS file to use for formatting")
-  .option("-t --title [title]", "title of the output document")
+  .option("-i --input <path>", "path of the input file")
+  .option("-o --output <path>", "path of the output .html file")
+  .option("-c --css <css>", "path to the CSS file to use for formatting")
+  .option("-t --title <title>", "title of the output document")
   .option("-q --quiet", "omit console output")
   .parse(process.argv);
 
