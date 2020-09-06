@@ -20,5 +20,5 @@ processor
   .addTransformer(splitFrontmatter)
   .addTransformer(parseData)
   .addTransformer(resolveData)
-  .addTransformer(parseContent)
-  .addTransformer(renderTemplate);
+  .addTransformer(renderTemplate)
+  .addTransformer(parseContent);
