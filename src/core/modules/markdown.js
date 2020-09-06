@@ -6,7 +6,7 @@ import sup from "markdown-it-sup";
 import sub from "markdown-it-sub";
 import abbr from "markdown-it-abbr";
 import footnote from "markdown-it-footnote";
-import math from "markdown-it-math";
+import taskLists from "markdown-it-task-lists";
 
 export default {
   async markdownToHtml(input) {
@@ -14,8 +14,15 @@ export default {
 
     parser.set({ typographer: true });
     parser.enable("replacements").enable("table");
-    parser.use(anchor, [1, 2, 3]).use(deflist).use(sup).use(sub).use(abbr).use(footnote).use(math);
+    parser
+      .use(anchor, [1, 2, 3])
+      .use(deflist)
+      .use(sup)
+      .use(sub)
+      .use(abbr)
+      .use(footnote)
+      .use(taskLists);
 
-    return parser.parse(input);
+    return parser.render(input);
   },
 };
