@@ -16,7 +16,9 @@ const plugins = [
 ];
 
 function clearDist() {
-  FsExtra.unlinkSync("dist");
+  if (FsExtra.existsSync("dist")) {
+    FsExtra.unlinkSync("dist");
+  }
 }
 
 async function buildModules() {

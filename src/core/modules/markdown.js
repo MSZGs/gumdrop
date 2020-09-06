@@ -7,6 +7,8 @@ import sub from "markdown-it-sub";
 import abbr from "markdown-it-abbr";
 import footnote from "markdown-it-footnote";
 import taskLists from "markdown-it-task-lists";
+import math from "markdown-it-texmath";
+import katex from "katex";
 
 export default {
   async markdownToHtml(input) {
@@ -21,7 +23,8 @@ export default {
       .use(sub)
       .use(abbr)
       .use(footnote)
-      .use(taskLists);
+      .use(taskLists)
+      .use(math, { engine: "katex", delimiters: "dollars" });
 
     return parser.render(input);
   },
